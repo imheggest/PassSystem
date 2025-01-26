@@ -56,14 +56,10 @@ public class PassMenu : MenuBase
             passItems[i].barAni.lockBarOpen += passItems[i].ChangeStateUnlock;
             passItems[i].barAni.lockBarClose += BarCloseComplete;
         }
-      
-    }
-    public override void OpenMenu()
-    {
-        base.OpenMenu();
+
         for (int i = 0; i < passItems.Count; i++)
         {
-            if (passData.passProgress>= i)
+            if (passData.passProgress >= i)
             {
                 passItems[i].passItemState = PassItem.PassItemState.Unlock;
             }
@@ -77,10 +73,16 @@ public class PassMenu : MenuBase
             passItems[i].UpdataSlider();
         }
         //иокЬ
-        if (passData.passProgress + 1<=passOB.passItemOBs.Length)
+        if (passData.passProgress + 1 <= passOB.passItemOBs.Length)
         {
             passItems[passData.passProgress + 1].barAni.DirectClose();
         }
+
+    }
+    public override void OpenMenu()
+    {
+        base.OpenMenu();
+      
       
     }
     public void BarOpenComplete() {

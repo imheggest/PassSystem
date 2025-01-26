@@ -108,3 +108,98 @@ MonoBehaviour:
       tipItems:
       - tipIcon: {fileID: 21300000, guid: 9e09e2a2dc8f2864190a125cba002b62, type: 3}
         tipContent: 2222
+  - passItemID: 6666
+    playerNeedKey: 4
+    chesses:
+    - chessID: 5555Left
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
+      chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
+      chestContent: X20
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
+        tipContent: 1111
+    - chessID: 5555Right
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
+      chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
+      chestContent: X23
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 9e09e2a2dc8f2864190a125cba002b62, type: 3}
+        tipContent: 2222
+  - passItemID: 7777
+    playerNeedKey: 4
+    chesses:
+    - chessID: 5555Left
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
+      chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
+      chestContent: X20
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
+        tipContent: 1111
+    - chessID: 5555Right
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
+      chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
+      chestContent: X23
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 9e09e2a2dc8f2864190a125cba002b62, type: 3}
+        tipContent: 2222
+  - passItemID: 8888
+    playerNeedKey: 4
+    chesses:
+    - chessID: 5555Left
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
+      chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
+      chestContent: X20
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
+        tipContent: 1111
+    - chessID: 5555Right
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
+      chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
+      chestContent: X23
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 9e09e2a2dc8f2864190a125cba002b62, type: 3}
+        tipContent: 2222
+  - passItemID: 9999
+    playerNeedKey: 4
+    chesses:
+    - chessID: 5555Left
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
+      chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
+      chestContent: X20
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
+        tipContent: 1111
+    - chessID: 5555Right
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
+      chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
+      chestContent: X23
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 9e09e2a2dc8f2864190a125cba002b62, type: 3}
+        tipContent: 2222
+  - passItemID: 0000
+    playerNeedKey: 4
+    chesses:
+    - chessID: 5555Left
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
+      chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
+      chestContent: X20
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
+        tipContent: 1111
+    - chessID: 5555Right
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
+      chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
+      chestContent: X23
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 9e09e2a2dc8f2864190a125cba002b62, type: 3}
+        tipContent: 2222

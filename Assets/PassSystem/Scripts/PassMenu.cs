@@ -19,6 +19,7 @@ public class PassMenu : MenuBase
 
 
     #endregion
+    
     #region passdata
     public class PassData
     {
@@ -52,6 +53,7 @@ public class PassMenu : MenuBase
            // passItems[i].PassItemInit();
             passItems[i].sliderAniComplete += TestA;
             passItems[i].barAni.lockBarOpen += BarOpenComplete;
+            passItems[i].barAni.lockBarOpen += passItems[i].ChangeStateUnlock;
             passItems[i].barAni.lockBarClose += BarCloseComplete;
         }
       
@@ -83,6 +85,7 @@ public class PassMenu : MenuBase
     }
     public void BarOpenComplete() {
         Debug.Log("BarOpenComplete");
+        UpdateSlider();
     }
     public void BarCloseComplete()
     {
@@ -146,7 +149,7 @@ public class PassMenu : MenuBase
 
         for (int i = 0; i < passItems.Count; i++)
         {
-            if (passItems[i].CanUnLock())
+            if (passItems[i].CanUnLock()&&passData.passProgress>= i)
             {
                 passItems[i].PlaySliderAni();
                 Debug.Log(i);
@@ -163,7 +166,11 @@ public class PassMenu : MenuBase
                 if (passData.passProgress>= i)
                 {
                     PlayPassItemAni();
-                } 
+                }
+                else
+                {
+                    Suo();
+                }
                 break;
             }
         }
@@ -182,6 +189,29 @@ public class PassMenu : MenuBase
             passData.passProgress++;
         }
         Debug.Log("passData.playerKey"+passData.playerKey+ "passData.passProgress"+ passData.passProgress);
+    }
+    public void JieSuo() {
+
+        for (int i = 0; i < passItems.Count; i++)
+        {
+            if (passItems[i].passItemState==PassItem.PassItemState.Lock)
+            {
+                passItems[i].barAni.PlayAniOpen();
+                break;
+            }
+        }
+    
+    }
+    public void Suo() {
+
+        for (int i = 0; i < passItems.Count; i++)
+        {
+            if (passItems[i].passItemState == PassItem.PassItemState.Lock)
+            {
+                passItems[i].barAni.PlayAniClose();
+                break;
+            }
+        }
     }
     public void UpdateSlider() {
       
@@ -227,6 +257,10 @@ public class PassMenuEditor:Editor {
         if (GUILayout.Button("¸üÐÂ"))
         {
             PassMenu.UpdateSlider();
+        }
+        if (GUILayout.Button("½âËø"))
+        {
+            PassMenu.JieSuo();
         }
     }
 }

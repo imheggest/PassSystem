@@ -73,7 +73,7 @@ public class PassItem : MonoBehaviour
       
         return passItemState== PassItemState.Lock;
     }
-    private void ChangeStateUnlock()
+    public void ChangeStateUnlock()
     {
         passItemState = PassItemState. Unlock;
     }

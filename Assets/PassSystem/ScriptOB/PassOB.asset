@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce9e3393b2384804cace529449f2f3be, type: 3}
+  m_Name: PassOB
+  m_EditorClassIdentifier: 
+  passItemOBs:
+  - passItemID: 1111
+    playerNeedKey: 0
+    chesses:
+    - chessID: 1111Left
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: d5583070971864116a83a0f2577fa4da, type: 3}
+      chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
+      chestContent: X10
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
+        tipContent: 1111
+    - chessID: 1111Right
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: fc8a79fa197ac497b9eb57971ec95618, type: 3}
+      chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
+      chestContent: X13
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 9e09e2a2dc8f2864190a125cba002b62, type: 3}
+        tipContent: 2222
+  - passItemID: 2222
+    playerNeedKey: 1
+    chesses:
+    - chessID: 1111Left
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
+      chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
+      chestContent: X20
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
+        tipContent: 1111
+    - chessID: 1111Right
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
+      chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
+      chestContent: X23
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 9e09e2a2dc8f2864190a125cba002b62, type: 3}
+        tipContent: 2222
+  - passItemID: 3333
+    playerNeedKey: 2
+    chesses:
+    - chessID: 1111Left
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
+      chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
+      chestContent: X20
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
+        tipContent: 1111
+    - chessID: 1111Right
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
+      chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
+      chestContent: X23
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 9e09e2a2dc8f2864190a125cba002b62, type: 3}
+        tipContent: 2222
+  - passItemID: 4444
+    playerNeedKey: 3
+    chesses:
+    - chessID: 1111Left
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
+      chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
+      chestContent: X20
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
+        tipContent: 1111
+    - chessID: 1111Right
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
+      chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
+      chestContent: X23
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 9e09e2a2dc8f2864190a125cba002b62, type: 3}
+        tipContent: 2222
+  - passItemID: 5555
+    playerNeedKey: 4
+    chesses:
+    - chessID: 5555Left
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
+      chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
+      chestContent: X20
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
+        tipContent: 1111
+    - chessID: 5555Right
+      chessType: 0
+      chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
+      chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
+      chestContent: X23
+      tipItems:
+      - tipIcon: {fileID: 21300000, guid: 9e09e2a2dc8f2864190a125cba002b62, type: 3}
+        tipContent: 2222

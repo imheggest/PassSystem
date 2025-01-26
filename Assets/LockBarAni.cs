@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class LockBarAni : MonoBehaviour
 {
     public Transform leftDown, rightDown;
     public Image lockIcon, lockBackGround;
+    public UnityAction lockBarOpen, lockBarClose;
     public void PlayAniOpen()
     {
 
@@ -22,7 +24,7 @@ public class LockBarAni : MonoBehaviour
         rightDown.DOScale(new Vector3(0, 1, 1), 1f);
 
         yield return myTween.WaitForCompletion();
-      
+        lockBarOpen?.Invoke();
 
 
         Debug.Log("Tween completed!");
@@ -41,7 +43,7 @@ public class LockBarAni : MonoBehaviour
         yield return myTween.WaitForCompletion();
         lockIcon.DOFade(1, 0.1f);
         yield return lockBackGround.DOFade(1, 0.1f).WaitForCompletion();
-
+        lockBarClose?.Invoke();
 
         Debug.Log("Tween completed!");
     }

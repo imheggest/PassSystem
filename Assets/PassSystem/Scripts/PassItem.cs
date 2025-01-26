@@ -17,6 +17,7 @@ public class PassItem : MonoBehaviour
     public PassItemState passItemState;
 
     public UnityAction sliderAniComplete;
+    
     public GameObject chessItemPrefab;
     public Transform chessItemsTF;
     public List<ChessItem> chessItems = new List<ChessItem>();
@@ -44,12 +45,13 @@ public class PassItem : MonoBehaviour
             chessItem.tip.InitTip(chess[i].tipItems);
             chessItems.Add(chessItem);
         }
+      
 
 
 
-       
 
-       
+
+
     }
     private void OnEnable()
     {
@@ -99,6 +101,17 @@ public class PassItem : MonoBehaviour
         sliderAniComplete?.Invoke();
 
 
+    }
+    public void UpdataSlider() {
+        if (passItemState==PassItemState.Unlock)
+        {
+            slider.value=1f;
+        }
+        else
+        {
+            slider.value = 0f;
+        }
+    
     }
 }
 [CustomEditor(typeof(PassItem))]

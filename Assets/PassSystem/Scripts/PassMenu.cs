@@ -45,16 +45,50 @@ public class PassMenu : MenuBase
         }
 
         passData= ES3.Load("PassData",new PassData(0,0));
-
+        Debug.Log("玩家在"+passData.passProgress+"玩家的钥匙数"+ passData.playerKey);
         //初始化
         for (int i = 0; i < passItems.Count; i++)
         {
            // passItems[i].PassItemInit();
             passItems[i].sliderAniComplete += TestA;
+            passItems[i].barAni.lockBarOpen += BarOpenComplete;
+            passItems[i].barAni.lockBarClose += BarCloseComplete;
         }
-       
+      
     }
+    public override void OpenMenu()
+    {
+        base.OpenMenu();
+        for (int i = 0; i < passItems.Count; i++)
+        {
+            if (passData.passProgress>= i)
+            {
+                passItems[i].passItemState = PassItem.PassItemState.Unlock;
+            }
+            else
+            {
+                passItems[i].passItemState = PassItem.PassItemState.Lock;
+            }
+        }
+        for (int i = 0; i < passItems.Count; i++)
+        {
+            passItems[i].UpdataSlider();
+        }
+        //上锁
+        if (passData.passProgress + 1<=passOB.passItemOBs.Length)
+        {
+            passItems[passData.passProgress + 1].barAni.DirectClose();
+        }
+      
+    }
+    public void BarOpenComplete() {
+        Debug.Log("BarOpenComplete");
+    }
+    public void BarCloseComplete()
+    {
 
+        Debug.Log("BarCloseComplete");
+    }
     public void CreatePassItem()
     {
         CleanOld();

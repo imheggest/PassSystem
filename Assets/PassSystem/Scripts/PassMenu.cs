@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -12,54 +13,46 @@ public class PassMenu : MenuBase
     public Transform passItemContentTF;
     public List<PassItem> passItems;
     public Transform passItemsContentTestTF;
+    public PassKey passKey;
   
+   
 
-    #region action
-    public UnityAction passItemFullComplete;
-
-
-    #endregion
+   
     
     #region passdata
     public class PassData
     {
 
         public int playerKey;//玩家的钥匙
-        public int passProgress;//玩家在第几层
-
+      
+        public int passNum;//通行证等级数
         public PassData() { }
-        public PassData(int playerKey, int passProgress)
+        public PassData(int playerKey, int passNum)
         {
             this.playerKey = playerKey;
-            this.passProgress = passProgress;
+            this.passNum = passNum;
 
         }
     }
+  
     public PassData passData;
     #endregion
     public override void InitItem()
     {
         base.InitItem();
-        if (passItemsContentTestTF!=null)
+        if (passItemsContentTestTF != null)
         {
             passItemsContentTestTF.gameObject.SetActive(false);
         }
 
-        passData= ES3.Load("PassData",new PassData(0,0));
-        Debug.Log("玩家在"+passData.passProgress+"玩家的钥匙数"+ passData.playerKey);
+        passData = ES3.Load("PassData", new PassData(0, 0));
+        Debug.Log("通行证等级数：" + passData.passNum + "玩家的钥匙数：" + passData.playerKey);
         //初始化
-        for (int i = 0; i < passItems.Count; i++)
-        {
-           // passItems[i].PassItemInit();
-            passItems[i].sliderAniComplete += TestA;
-            passItems[i].barAni.lockBarOpen += BarOpenComplete;
-            passItems[i].barAni.lockBarOpen += passItems[i].ChangeStateUnlock;
-            passItems[i].barAni.lockBarClose += BarCloseComplete;
-        }
+        UpdataKeyCount();
 
         for (int i = 0; i < passItems.Count; i++)
         {
-            if (passData.passProgress >= i)
+            if (passData.passNum >= i)
             {
                 passItems[i].passItemState = PassItem.PassItemState.Unlock;
             }
@@ -68,37 +61,97 @@ public class PassMenu : MenuBase
                 passItems[i].passItemState = PassItem.PassItemState.Lock;
             }
         }
+        //
+
         for (int i = 0; i < passItems.Count; i++)
         {
             passItems[i].UpdataSlider();
         }
         //上锁
-        if (passData.passProgress + 1 <= passOB.passItemOBs.Length)
+        if (passData.passNum + 1 <= passOB.passItemOBs.Length)
         {
-            passItems[passData.passProgress + 1].barAni.DirectClose();
+            passItems[passData.passNum + 1].DirectClose();
         }
 
+
+
     }
+
+    private void UpdataKeyCount()
+    {
+     
+        if (passData.passNum + 1<passOB.passItemOBs.Length)
+        {
+            Debug.Log("当前在" + passData.passNum + "位置");
+            passKey.count.text = passData.playerKey + "/" + passOB.passItemOBs[passData.passNum + 1].playerNeedKey;
+        }
+        else if (passData.passNum + 1 ==passOB.passItemOBs.Length)
+        {
+            Debug.Log("已经完全解锁");
+            passKey.count.text = passData.playerKey + "/" +"***";
+        }
+        else
+        {
+            Debug.Log("已经完全解锁");
+        }
+       
+    }
+    public bool CanUseKey() {
+        return passData.playerKey >= passOB.passItemOBs[passData.passNum].playerNeedKey && passOB.passItemOBs.Length > passData.passNum + 1;
+       
+
+    }
+    #region Code
+    /// <summary>
+    /// 进度条动画完成
+    /// </summary>
+    void OnPassItemFullComplete(PassItem passItem) {
+        Debug.Log(" 进度条动画完成");
+        passItem.passItemState = PassItem.PassItemState.Unlock;
+        passData.playerKey -= passOB.passItemOBs[passData.passNum + 1].playerNeedKey;
+
+        passData.passNum++;
+        UpdataKeyCount();
+    }
+    /// <summary>
+    /// 进度条动画全部完成
+    /// </summary>
+    void OnAllPassItemFullComplete() {
+        Debug.Log(" 进度条动画全部完成");
+
+    }
+    /// <summary>
+    /// 开锁动画完成
+    /// </summary>
+    void OnOpenLock() {
+        Debug.Log(" 开锁动画完成");
+        UpdataKeyCount();
+    }
+
+    /// <summary>
+    /// 关锁动画完成
+    /// </summary>
+    void OnCloseLock() {
+
+        Debug.Log(" 关锁动画完成");
+        UpdataKeyCount();
+    }
+    #endregion
+
+
     public override void OpenMenu()
     {
         base.OpenMenu();
-      
-      
-    }
-    public void BarOpenComplete() {
-        Debug.Log("BarOpenComplete");
-        UpdateSlider();
-    }
-    public void BarCloseComplete()
-    {
+        UpdataKeyCount();
 
-        Debug.Log("BarCloseComplete");
     }
+
+    #region Setting
     public void CreatePassItem()
     {
         CleanOld();
         CreateNew();
-        
+
     }
     /// <summary>
     /// 
@@ -107,8 +160,8 @@ public class PassMenu : MenuBase
     {
         for (int i = 0; i < passItems.Count; i++)
         {
-            passItems[i].PassItemInit(passOB,i );
-           
+            passItems[i].PassItemInit(passOB, i);
+
         }
     }
     /// <summary>
@@ -146,51 +199,24 @@ public class PassMenu : MenuBase
         }
         passItems.Clear();
     }
+    #endregion
 
-    public void PlayPassItemAni() {
 
-        for (int i = 0; i < passItems.Count; i++)
-        {
-            if (passItems[i].CanUnLock()&&passData.passProgress>= i)
-            {
-                passItems[i].PlaySliderAni();
-                Debug.Log(i);
-                break;
-            }
-        }
-    }
-    public void TestA() {
 
-        for (int i = 0; i < passItems.Count; i++)
-        {
-            if (passItems[i].CanUnLock())
-            {
-                if (passData.passProgress>= i)
-                {
-                    PlayPassItemAni();
-                }
-                else
-                {
-                    Suo();
-                }
-                break;
-            }
-        }
-        Debug.Log("TestA");
-     
-     
-        // PlayPassItemAni();
-    }
     public void AddKey()
     {
 
         passData.playerKey+=5;
-        while (passData.playerKey >= passOB.passItemOBs[passData.passProgress].playerNeedKey && passOB.passItemOBs.Length > passData.passProgress + 1)
-        {
-            passData.playerKey -= passOB.passItemOBs[passData.passProgress].playerNeedKey;
-            passData.passProgress++;
-        }
-        Debug.Log("passData.playerKey"+passData.playerKey+ "passData.passProgress"+ passData.passProgress);
+        UpdataKeyCount();
+
+        Debug.Log("passData.playerKey"+passData.playerKey+ "passData.passProgress"+ passData.passNum);
+    }
+    public void AddKey(int count)
+    {
+
+        passData.playerKey += count;
+        UpdataKeyCount();
+        Debug.Log("passData.playerKey" + passData.playerKey + "passData.passProgress" + passData.passNum);
     }
     public void JieSuo() {
 
@@ -198,7 +224,7 @@ public class PassMenu : MenuBase
         {
             if (passItems[i].passItemState==PassItem.PassItemState.Lock)
             {
-                passItems[i].barAni.PlayAniOpen();
+               
                 break;
             }
         }
@@ -210,20 +236,110 @@ public class PassMenu : MenuBase
         {
             if (passItems[i].passItemState == PassItem.PassItemState.Lock)
             {
-                passItems[i].barAni.PlayAniClose();
+           
                 break;
             }
         }
     }
-    public void UpdateSlider() {
+    public void Test111() {
+        //AddKey(8);
+        if (passData.passNum + 1>passOB.passItemOBs.Length)
+        {
+            Debug.Log("已经全部解锁");
+            return;
+        }
+        int begin=passData.passNum+1;
       
+        Debug.Log("Begin"+ begin);
+        int end = passOB.passItemOBs.Length-1;
+        int all= 0;
+        for (int i = begin; i < passOB.passItemOBs.Length;)
+        {
+            all += passOB.passItemOBs[i].playerNeedKey;
+            if (passData.playerKey>= all)
+            {
+                i++;
+            }
+            else
+            {
+                end = i;
+                break;
+            }
+        }
+        Debug.LogError("begin"+begin+"end"+end+ "passData.playerKey" +passData.playerKey+"all"+all);
+        StartCoroutine(enumerator(begin, end));
+    
+    }
+    IEnumerator enumerator() {
+        //开
+        PassItem ppp = passItems[0];
+        ppp. lockIcon.DOFade(0, 1f);
+        yield return ppp.lockBackGround.DOFade(0, 1f).WaitForCompletion();
+        Tween myTween = ppp.leftDown.DOScale(new Vector3(0, 1, 1), 1f);
+        ppp.rightDown.DOScale(new Vector3(0, 1, 1), 1f);
+        yield return myTween.WaitForCompletion();
+        //进度条
+        PassItem qqq = passItems[0];
+        yield return qqq.slider.DOValue(1, 2f).WaitForCompletion();
+        //关
+        PassItem eee = passItems[0];
+        Tween myTween2 = eee.leftDown.DOScale(new Vector3(1, 1, 1), 1f);
+        eee.rightDown.DOScale(new Vector3(1, 1, 1), 1f);
+
+        yield return myTween2.WaitForCompletion();
+        eee.lockIcon.DOFade(1, 0.1f);
+        yield return eee.lockBackGround.DOFade(1, 0.1f).WaitForCompletion();
+   
+    }
+    /// <summary>
+    /// /
+    /// </summary>
+    /// <param name="begin"></param>
+    /// <param name="end"></param>
+    /// <returns></returns>
+    IEnumerator enumerator(int begin, int end)
+    {
+        //开
+        PassItem ppp = passItems[begin];
+        ppp.lockIcon.DOFade(0, 1f);
+        yield return ppp.lockBackGround.DOFade(0, 1f).WaitForCompletion();
+        Tween myTween = ppp.leftDown.DOScale(new Vector3(0, 1, 1), 1f);
+        ppp.rightDown.DOScale(new Vector3(0, 1, 1), 1f);
+        yield return myTween.WaitForCompletion();
+        OnOpenLock();
+        //进度条
+        for (int i = begin; i < end; i++)
+        {
+          
+            PassItem qqq = passItems[i];
+            yield return qqq.slider.DOValue(1, 2f).WaitForCompletion();
+            
+            OnPassItemFullComplete(qqq);
+        }
+        OnAllPassItemFullComplete();
+        //关
+        if (end<passItems.Count-1)
+        {
+            PassItem eee = passItems[end];
+            Tween myTween2 = eee.leftDown.DOScale(new Vector3(1, 1, 1), 1f);
+            eee.rightDown.DOScale(new Vector3(1, 1, 1), 1f);
+
+            yield return myTween2.WaitForCompletion();
+            eee.lockIcon.DOFade(1, 0.1f);
+            yield return eee.lockBackGround.DOFade(1, 0.1f).WaitForCompletion();
+            OnCloseLock();
+        }
+        else
+        {
+            PassItem qqq = passItems[end];
+            yield return qqq.slider.DOValue(1, 2f).WaitForCompletion();
+            OnPassItemFullComplete(qqq);
+        }
       
      
-       
-        Debug.Log(" passData.playerKey++");
-        PlayPassItemAni();
 
     }
+   
     
 }
 [CustomEditor(typeof(PassMenu))]
@@ -235,10 +351,7 @@ public class PassMenuEditor:Editor {
        
         var PassMenu = (PassMenu)target;
         
-        if (GUILayout.Button("开始slider动画"))
-        {
-            PassMenu.PlayPassItemAni();
-        }
+     
         if (GUILayout.Button("创建PassItem"))
         {
             PassMenu.CreatePassItem();
@@ -258,7 +371,7 @@ public class PassMenuEditor:Editor {
         }
         if (GUILayout.Button("更新"))
         {
-            PassMenu.UpdateSlider();
+            PassMenu.Test111();
         }
         if (GUILayout.Button("解锁"))
         {

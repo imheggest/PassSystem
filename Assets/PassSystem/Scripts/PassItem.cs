@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PassItem : MonoBehaviour
 {
@@ -16,16 +17,18 @@ public class PassItem : MonoBehaviour
     public string passItemID;
     public PassItemState passItemState;
 
-    public UnityAction sliderAniComplete;
-    
+   
     public GameObject chessItemPrefab;
     public Transform chessItemsTF;
     public List<ChessItem> chessItems = new List<ChessItem>();
     public Slider slider;
     public TextMeshProUGUI iconIndex;
-    public LockBarAni barAni;
-         
-   
+  
+  
+    //条
+    public Transform leftDown, rightDown;
+    public Image lockIcon, lockBackGround;
+  
 
     public void PassItemInit(PassOB passOB,int index) {
         passItemID= passOB.passItemOBs[index].passItemID;
@@ -53,14 +56,7 @@ public class PassItem : MonoBehaviour
 
 
     }
-    private void OnEnable()
-    {
-        sliderAniComplete += ChangeStateUnlock;
-    }
-    private void OnDisable()
-    {
-        sliderAniComplete -= ChangeStateUnlock;
-    }
+   
     private void CleanChessItemsTF() {
 
         for (int i = chessItemsTF.childCount-1; i >= 0; i--)
@@ -77,28 +73,30 @@ public class PassItem : MonoBehaviour
     {
         passItemState = PassItemState. Unlock;
     }
-
-    public void PlaySliderAni() {
-        StartCoroutine(PlayAni());
-    
+    public void ChangeStateLock()
+    {
+        passItemState = PassItemState.Lock;
     }
-    IEnumerator PlayAni() {
-        for (int i = 0; i < 101; i++)
-        {
-            if (slider.value < 0.99f)
-            {
-                slider.value += 0.01f;
-                yield return new WaitForSeconds(0.01f);
-            }
-            else
-            {
-                yield return new WaitForSeconds(0.01f);
-                slider.value = 1f;
-                break;
-            }
-        }
-        
-        sliderAniComplete?.Invoke();
+
+  
+   
+    public void DirectOpen()
+    {
+        Color colorLockIcon = lockIcon.color;
+        lockIcon.color = new Color(colorLockIcon.r, colorLockIcon.g, colorLockIcon.b, 0);
+        Color colorLockBackGround = lockBackGround.color;
+        lockBackGround.color = new Color(colorLockBackGround.r, colorLockBackGround.g, colorLockBackGround.b, 0);
+        leftDown.localScale = new Vector3(0, 1, 1);
+        rightDown.localScale = new Vector3(0, 1, 1);
+    }
+    public void DirectClose()
+    {
+        Color colorLockIcon = lockIcon.color;
+        lockIcon.color = new Color(colorLockIcon.r, colorLockIcon.g, colorLockIcon.b, 100);
+        Color colorLockBackGround = lockBackGround.color;
+        lockBackGround.color = new Color(colorLockBackGround.r, colorLockBackGround.g, colorLockBackGround.b, 100);
+        leftDown.localScale = new Vector3(1, 1, 1);
+        rightDown.localScale = new Vector3(1, 1, 1);
 
 
     }
@@ -121,18 +119,7 @@ public class PassItemEditor : Editor {
     {
         base.OnInspectorGUI();
         var PassItem = (PassItem)target;
-        if (GUILayout.Button("开始slider动画"))
-        {
-            PassItem.PlaySliderAni();
-        }
-        if (GUILayout.Button("开锁"))
-        {
-            PassItem.barAni.PlayAniOpen();
-        }
-        if (GUILayout.Button("关锁"))
-        {
-            PassItem.barAni.PlayAniClose();
-        }
+       
     }
 
 }

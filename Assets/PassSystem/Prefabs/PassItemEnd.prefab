@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 784842003292968005}
   - component: {fileID: 3800947408447073423}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 6536517687600263292}
   - component: {fileID: 5138257313749551826}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -437,7 +437,10 @@ MonoBehaviour:
   chessItems: []
   slider: {fileID: 5445387486219059190}
   iconIndex: {fileID: 7885050402984579997}
-  barAni: {fileID: 470815362719467162}
+  leftDown: {fileID: 7790052961436585194}
+  rightDown: {fileID: 8537833907820585075}
+  lockIcon: {fileID: 2431771614235937248}
+  lockBackGround: {fileID: 3800947408447073423}
 --- !u!1 &3297563620934784136
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +490,7 @@ GameObject:
   - component: {fileID: 4241598007557415480}
   - component: {fileID: 2431771614235937248}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1033,7 +1036,7 @@ GameObject:
   - component: {fileID: 7789347593244772476}
   - component: {fileID: 5934165401787071550}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1107,7 +1110,6 @@ GameObject:
   - component: {fileID: 6155576885750686139}
   - component: {fileID: 9070197269539872109}
   - component: {fileID: 7525724750079250885}
-  - component: {fileID: 470815362719467162}
   m_Layer: 5
   m_Name: LockBarAni
   m_TagString: Untagged
@@ -1177,19 +1179,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &470815362719467162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8970036033380751819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1921c7a7d00e8340bb8151684b6926a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftDown: {fileID: 7790052961436585194}
-  rightDown: {fileID: 8537833907820585075}
-  lockIcon: {fileID: 2431771614235937248}
-  lockBackGround: {fileID: 3800947408447073423}

@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1898820626903184962}
   - component: {fileID: 624450792498530466}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,10 +184,10 @@ RectTransform:
   - {fileID: 4298058144845797373}
   m_Father: {fileID: 3105765090764378690}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.8175}
-  m_SizeDelta: {x: -435.61, y: 20}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3186061768099532877
 MonoBehaviour:
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 6444177137719794037}
   - component: {fileID: 2322180605376484142}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -931,7 +931,10 @@ MonoBehaviour:
   chessItems: []
   slider: {fileID: 3186061768099532877}
   iconIndex: {fileID: 1943103166411628359}
-  barAni: {fileID: 6340452805515100422}
+  leftDown: {fileID: 4377864179081279913}
+  rightDown: {fileID: 4569631966373823576}
+  lockIcon: {fileID: 8961536555787163234}
+  lockBackGround: {fileID: 1911187358557165235}
 --- !u!1 &3404490940257628412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1099,6 @@ GameObject:
   - component: {fileID: 316194222905603428}
   - component: {fileID: 7896151905288417771}
   - component: {fileID: 7027658777784492461}
-  - component: {fileID: 6340452805515100422}
   m_Layer: 5
   m_Name: LockBarAni
   m_TagString: Untagged
@@ -1166,22 +1168,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6340452805515100422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4477844233354691336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1921c7a7d00e8340bb8151684b6926a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftDown: {fileID: 4377864179081279913}
-  rightDown: {fileID: 4569631966373823576}
-  lockIcon: {fileID: 8961536555787163234}
-  lockBackGround: {fileID: 1911187358557165235}
 --- !u!1 &5344587566751587233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,7 +1334,7 @@ GameObject:
   - component: {fileID: 8833295860187540062}
   - component: {fileID: 8961536555787163234}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1459,7 +1445,7 @@ GameObject:
   - component: {fileID: 166710932418904124}
   - component: {fileID: 1911187358557165235}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

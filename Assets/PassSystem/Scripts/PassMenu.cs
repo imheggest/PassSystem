@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using static ChessItem;
 
 public class PassMenu : MenuBase
 {
@@ -14,8 +15,9 @@ public class PassMenu : MenuBase
     public List<PassItem> passItems;
     public Transform passItemsContentTestTF;
     public PassKey passKey;
-  
-   
+    //string 奖励ID，bool是否获取
+    public Dictionary<string,bool> keyValuePairs = new Dictionary<string,bool>();
+    
 
    
     
@@ -44,9 +46,33 @@ public class PassMenu : MenuBase
         {
             passItemsContentTestTF.gameObject.SetActive(false);
         }
-
+        Dictionary<string, bool> example = new Dictionary<string, bool>();
+        for (int i = 0; i < passOB.passItemOBs.Length; i++)
+        {
+            for (int j = 0; j < passOB.passItemOBs[i].chesses.Length; j++)
+            {
+                example.Add(passOB.passItemOBs[i].chesses[j].chessID,false);
+            }
+        }
+        foreach (var item in example)
+        {
+            Debug.Log(item.Value);
+        }
+        keyValuePairs = ES3.Load("lingqu", example);
         passData = ES3.Load("PassData", new PassData(0, 0));
         Debug.Log("通行证等级数：" + passData.passNum + "玩家的钥匙数：" + passData.playerKey);
+        for (int i = 0; i < passItems.Count; i++)
+        {
+            passItems[i].InitAllChessItem();
+        }
+        for (int i = 0; i < passItems.Count; i++)
+        {
+            var p = passItems[i].chessItems;
+            foreach (var item in p)
+            {
+                item.saveGet += SaveGetChess;
+            }
+        }
         //初始化
         UpdataKeyCount();
 
@@ -54,11 +80,11 @@ public class PassMenu : MenuBase
         {
             if (passData.passNum >= i)
             {
-                passItems[i].passItemState = PassItem.PassItemState.Unlock;
+                passItems[i].ChangeStateUnlock(keyValuePairs);
             }
             else
             {
-                passItems[i].passItemState = PassItem.PassItemState.Lock;
+                passItems[i].ChangeStateLock();
             }
         }
         //
@@ -76,7 +102,16 @@ public class PassMenu : MenuBase
 
 
     }
+    public void SaveGetChess(string chessId,bool act) {
+        if (keyValuePairs.ContainsKey(chessId))
+        {
+            keyValuePairs[chessId] = act;
+            ES3.Save("lingqu", keyValuePairs);
+        }
+      
 
+
+    }
     private void UpdataKeyCount()
     {
      
@@ -111,6 +146,8 @@ public class PassMenu : MenuBase
         passData.playerKey -= passOB.passItemOBs[passData.passNum + 1].playerNeedKey;
 
         passData.passNum++;
+        ES3.Save("PassData", passData);
+        passItem.ChangeStateUnlock(keyValuePairs);
         UpdataKeyCount();
     }
     /// <summary>
@@ -156,11 +193,11 @@ public class PassMenu : MenuBase
     /// <summary>
     /// 
     /// </summary>
-    public void InitPassItem()
+    public void PassItemSetting()
     {
         for (int i = 0; i < passItems.Count; i++)
         {
-            passItems[i].PassItemInit(passOB, i);
+            passItems[i].PassItemSetting(passOB, i);
 
         }
     }
@@ -342,6 +379,7 @@ public class PassMenu : MenuBase
    
     
 }
+#if UNITY_EDITOR        
 [CustomEditor(typeof(PassMenu))]
 public class PassMenuEditor:Editor {
    
@@ -358,7 +396,7 @@ public class PassMenuEditor:Editor {
         }
         if (GUILayout.Button("配置PassItem"))
         {
-            PassMenu.InitPassItem();
+            PassMenu.PassItemSetting();
         }
         if (GUILayout.Button("删除全部PassItem"))
         {
@@ -379,3 +417,4 @@ public class PassMenuEditor:Editor {
         }
     }
 }
+#endif

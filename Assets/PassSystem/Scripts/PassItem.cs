@@ -28,9 +28,15 @@ public class PassItem : MonoBehaviour
     //Ìõ
     public Transform leftDown, rightDown;
     public Image lockIcon, lockBackGround;
-  
 
-    public void PassItemInit(PassOB passOB,int index) {
+    public void InitAllChessItem() {
+
+        for (int i = 0; i < chessItems.Count; i++)
+        {
+            chessItems[i].InitChessItem();
+        }
+    }
+    public void PassItemSetting(PassOB passOB,int index) {
         passItemID= passOB.passItemOBs[index].passItemID;
         iconIndex.text = (index + 1).ToString();
         CleanChessItemsTF();
@@ -44,7 +50,8 @@ public class PassItem : MonoBehaviour
             chessItem.icon.sprite = chess[i].chessImage;
             chessItem.iconBackGround.sprite = chess[i].chessBackground;
             chessItem.IconText.text = chess[i].chestContent;
-            
+            chessItem.chessID = chess[i].chessID;
+           
             chessItem.tip.InitTip(chess[i].tipItems);
             chessItems.Add(chessItem);
         }
@@ -69,13 +76,31 @@ public class PassItem : MonoBehaviour
       
         return passItemState== PassItemState.Lock;
     }
-    public void ChangeStateUnlock()
+    public void ChangeStateUnlock(Dictionary<string, bool> pairs)
     {
         passItemState = PassItemState. Unlock;
+        for (int i = 0; i < chessItems.Count; i++)
+        {
+            if (!pairs[chessItems[i].chessID])
+            {
+                chessItems[i].UnlockChessItem();
+            }
+            else
+            {
+                Debug.LogError("Ëø");
+                chessItems[i].LockChessItem();
+
+            }
+           
+        }
     }
     public void ChangeStateLock()
     {
         passItemState = PassItemState.Lock;
+        for (int i = 0; i < chessItems.Count; i++)
+        {
+            chessItems[i].LockChessItem();
+        }
     }
 
   
@@ -112,14 +137,4 @@ public class PassItem : MonoBehaviour
     
     }
 }
-[CustomEditor(typeof(PassItem))]
-public class PassItemEditor : Editor {
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-        var PassItem = (PassItem)target;
-       
-    }
-
-}

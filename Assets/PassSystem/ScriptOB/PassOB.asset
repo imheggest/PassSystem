@@ -35,7 +35,7 @@ MonoBehaviour:
   - passItemID: 2222
     playerNeedKey: 1
     chesses:
-    - chessID: 1111Left
+    - chessID: 2222Left
       chessType: 0
       chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
       chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
@@ -43,7 +43,7 @@ MonoBehaviour:
       tipItems:
       - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
         tipContent: 1111
-    - chessID: 1111Right
+    - chessID: 2222Right
       chessType: 0
       chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
       chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
@@ -54,7 +54,7 @@ MonoBehaviour:
   - passItemID: 3333
     playerNeedKey: 2
     chesses:
-    - chessID: 1111Left
+    - chessID: 3333Left
       chessType: 0
       chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
       chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
@@ -62,7 +62,7 @@ MonoBehaviour:
       tipItems:
       - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
         tipContent: 1111
-    - chessID: 1111Right
+    - chessID: 3333Right
       chessType: 0
       chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
       chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
@@ -73,7 +73,7 @@ MonoBehaviour:
   - passItemID: 4444
     playerNeedKey: 3
     chesses:
-    - chessID: 1111Left
+    - chessID: 4444Left
       chessType: 0
       chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
       chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
@@ -81,7 +81,7 @@ MonoBehaviour:
       tipItems:
       - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
         tipContent: 1111
-    - chessID: 1111Right
+    - chessID: 4444Right
       chessType: 0
       chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
       chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
@@ -111,7 +111,7 @@ MonoBehaviour:
   - passItemID: 6666
     playerNeedKey: 4
     chesses:
-    - chessID: 5555Left
+    - chessID: 6666Left
       chessType: 0
       chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
       chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
@@ -119,7 +119,7 @@ MonoBehaviour:
       tipItems:
       - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
         tipContent: 1111
-    - chessID: 5555Right
+    - chessID: 6666Right
       chessType: 0
       chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
       chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
@@ -130,7 +130,7 @@ MonoBehaviour:
   - passItemID: 7777
     playerNeedKey: 4
     chesses:
-    - chessID: 5555Left
+    - chessID: 7777Left
       chessType: 0
       chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
       chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
@@ -138,7 +138,7 @@ MonoBehaviour:
       tipItems:
       - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
         tipContent: 1111
-    - chessID: 5555Right
+    - chessID: 7777Right
       chessType: 0
       chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
       chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
@@ -149,7 +149,7 @@ MonoBehaviour:
   - passItemID: 8888
     playerNeedKey: 4
     chesses:
-    - chessID: 5555Left
+    - chessID: 8888Left
       chessType: 0
       chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
       chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
@@ -157,7 +157,7 @@ MonoBehaviour:
       tipItems:
       - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
         tipContent: 1111
-    - chessID: 5555Right
+    - chessID: 8888Right
       chessType: 0
       chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
       chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
@@ -168,7 +168,7 @@ MonoBehaviour:
   - passItemID: 9999
     playerNeedKey: 4
     chesses:
-    - chessID: 5555Left
+    - chessID: 9999Left
       chessType: 0
       chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
       chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
@@ -176,7 +176,7 @@ MonoBehaviour:
       tipItems:
       - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
         tipContent: 1111
-    - chessID: 5555Right
+    - chessID: 9999Right
       chessType: 0
       chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
       chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
@@ -187,7 +187,7 @@ MonoBehaviour:
   - passItemID: 0000
     playerNeedKey: 4
     chesses:
-    - chessID: 5555Left
+    - chessID: 0000Left
       chessType: 0
       chessImage: {fileID: 21300000, guid: ad7aee991f4a0441e92e16f535281d32, type: 3}
       chessBackground: {fileID: 21300000, guid: bd9f2d89ca95f4d8aa4af543e31dcda3, type: 3}
@@ -195,7 +195,7 @@ MonoBehaviour:
       tipItems:
       - tipIcon: {fileID: 21300000, guid: 0db74eaedc5768049b3b62b9e6149b09, type: 3}
         tipContent: 1111
-    - chessID: 5555Right
+    - chessID: 0000Right
       chessType: 0
       chessImage: {fileID: 21300000, guid: ac1fa963d7f0043e1b589f437398c7ac, type: 3}
       chessBackground: {fileID: 21300000, guid: 9cec25c03b6b34cb69a72aed6d6bbc92, type: 3}
